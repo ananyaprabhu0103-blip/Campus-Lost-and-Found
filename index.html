@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Lost & Found</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    
+    
+<header>
+    <h1>Campus Lost & Found</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#lost-items">Lost Items</a>
+        <a href="#found-items">Found Items</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Lost Something on Campus?</h2>
+    <p>Find what you lost. Return what you found.</p>
+    <a href="#report">
+        <button>Report an Item</button>
+    </a>
+    <a href="#items">
+        <button>View Items</button>
+    </a>
+</section>
+
+<section class="container" id="items">
+    <h2>Search Items</h2>
+    <input type="text" id="searchInput"
+           placeholder="Search for an item...">
+
+    <h2 id="lost-items">Lost Items</h2>
+    <div class="items" id="lostList">
+        <div class="item-card">
+            <h3>College ID Card</h3>
+            <p>Status: Lost</p>
+            <p>Location: College Library</p>
+        </div>
+    </div>
+
+    <h2 id="found-items">Found Items</h2>
+    <div class="items" id="foundList">
+        <div class="item-card">
+            <h3>Water Bottle</h3>
+            <p>Status: Found</p>
+            <p>Location: College Canteen</p>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="report">
+    <h2>Report an Item</h2>
+    <form id="itemForm">
+        <label>Item Name</label>
+        <input type="text" id="itemName"
+               placeholder="Enter item name" required>
+
+        <label>Description</label>
+        <textarea id="description"
+                  placeholder="Describe the item" required></textarea>
+
+        <label>Item Type</label>
+        <select id="itemType" required>
+            <option value="">Select type</option>
+            <option value="Lost">Lost</option>
+            <option value="Found">Found</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" id="location"
+               placeholder="Where was it lost or found?" required>
+
+        <button type="submit">Submit Report</button>
+    </form>
+</section>
+
+<footer>
+    <p>Campus Lost & Found | Helping Students Find Their Belongings</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+</body>
+</html>
