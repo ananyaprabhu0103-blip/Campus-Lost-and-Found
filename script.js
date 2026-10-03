@@ -1,4 +1,13 @@
 
+// Welcome Page
+const welcomePage = document.getElementById("welcomePage");
+const appContent = document.getElementById("appContent");
+const enterSite = document.getElementById("enterSite");
+
+enterSite.addEventListener("click", function () {
+    welcomePage.style.display = "none";
+    appContent.hidden = false;
+});
 
 // Get the form and item lists
 const itemForm = document.getElementById("itemForm");
@@ -7,7 +16,7 @@ const foundList = document.getElementById("foundList");
 const searchInput = document.getElementById("searchInput");
 
 // Submit a new lost or found item
-itemForm.addEventListener("submit", function(event) {
+itemForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
     // Get details from the form
@@ -32,15 +41,16 @@ itemForm.addEventListener("submit", function(event) {
     const itemLocation = document.createElement("p");
     itemLocation.textContent = "Location: " + location;
 
+    // Add details to the card
     card.appendChild(heading);
     card.appendChild(status);
     card.appendChild(itemDescription);
     card.appendChild(itemLocation);
 
-    // Add card to the correct section
+    // Add the card to the correct section
     if (itemType === "Lost") {
         lostList.appendChild(card);
-    } else {
+    } else if (itemType === "Found") {
         foundList.appendChild(card);
     }
 
@@ -50,19 +60,36 @@ itemForm.addEventListener("submit", function(event) {
     // Apply the current search filter
     filterItems();
 
-    alert("Your item has been reported successfully!");
+    // Remove any previous success message
+    const oldMessage = document.querySelector(".success-message");
+    if (oldMessage) {
+        oldMessage.remove();
+    }
+
+    // Show success message
+    const message = document.createElement("p");
+    message.textContent = "Your item has been reported successfully!";
+    message.className = "success-message";
+    message.setAttribute("role", "status");
+
+    itemForm.after(message);
+
+    // Remove the message after 3 seconds
+    setTimeout(function () {
+        message.remove();
+    }, 3000);
 });
 
-// Search items
+// Search Items
 function filterItems() {
     const searchText = searchInput.value.toLowerCase().trim();
     const cards = document.querySelectorAll(".item-card");
 
-    cards.forEach(function(card) {
+    cards.forEach(function (card) {
         const itemText = card.textContent.toLowerCase();
 
         if (itemText.includes(searchText)) {
-            card.style.display = "block";
+            card.style.display = "";
         } else {
             card.style.display = "none";
         }
